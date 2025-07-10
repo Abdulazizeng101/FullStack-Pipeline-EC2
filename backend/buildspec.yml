@@ -1,0 +1,17 @@
+version: 0.2
+
+phases:
+  build:
+    commands:
+      - echo "Build backend - placeholder"
+  post_build:
+    commands:
+      - echo "Zipping app for CodeDeploy"
+      - mkdir output
+      - cp Program.cs appspec.yml output/
+      - cd output
+      - zip -r ../backend-output.zip .
+
+artifacts:
+  files:
+    - backend-output.zip
